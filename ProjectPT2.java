@@ -14,12 +14,17 @@ import javafx.stage.Window;
 import java.io.*;
 
 
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
+
+
 
 
 public class Supplier extends Application {
 
 
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Registration Form JavaFX Application");
@@ -119,8 +124,6 @@ public class Supplier extends Application {
 
 
 
-
-
         submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -172,9 +175,26 @@ public class Supplier extends Application {
             {
                
                 Stage stage = new Stage();
-                stage.setHeight(500);
-                stage.setWidth(800);
+              
+
+                stage.setTitle("creating TextField");
+                StackPane r = new StackPane();
+
+                TextField b = new TextField();
+                b.setPrefWidth(80);
+                b.setMaxWidth(80);
+
+                
+                r.getChildren().add(b);
+                Scene sc = new Scene(r, 800, 500);
+
+                stage.setScene(sc);
+
                 stage.show();
+
+               
+
+        
             }
         });
 
