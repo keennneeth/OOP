@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
+import java.io.*;
 public class Supplier extends Application {
 
     @Override
@@ -79,6 +79,30 @@ public class Supplier extends Application {
         GridPane.setHalignment(submitButton, HPos.CENTER);
         GridPane.setMargin(submitButton, new Insets(20, 0,20,0));
 
+        Button LoginButton = new Button("Log In");
+        LoginButton.setPrefHeight(40);
+        LoginButton.setDefaultButton(true);
+        LoginButton.setPrefWidth(100);
+        gridPane.add(LoginButton, 1, 4, 2, 1);
+
+
+
+        LoginButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+
+            public void handle(ActionEvent event) 
+            {
+               
+
+                
+
+
+                
+            }
+      });
+
+
+
         submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -95,8 +119,30 @@ public class Supplier extends Application {
                     return;
                 }
 
+                
                 showAlert(Alert.AlertType.CONFIRMATION, gridPane.getScene().getWindow(), "Registration Successful!", "Welcome " + nameField.getText());
+
+                
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("users.txt", true))) {
+                    bw.newLine();
+
+                    bw.write(emailField.getText());
+                   bw.write(" ");
+                    bw.write(passwordField.getText());
+                    bw.newLine();
+                    bw.write("_________________________________");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+            
+                }
+
+
+
+                
             }
+
+            
         });
     }
 
@@ -110,18 +156,16 @@ public class Supplier extends Application {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    
     public static void main(String[] args) {
+
+
+
         launch(args);
+
+
+               
+
+
+
     }
 }
