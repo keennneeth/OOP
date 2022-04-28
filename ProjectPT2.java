@@ -12,8 +12,14 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import java.io.*;
+
+
+
+
 public class Supplier extends Application {
 
+
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Registration Form JavaFX Application");
@@ -85,21 +91,33 @@ public class Supplier extends Application {
         LoginButton.setPrefWidth(100);
         gridPane.add(LoginButton, 1, 4, 2, 1);
 
+        Button ExitButton = new Button("Exit");
+        ExitButton.setPrefHeight(40);
+        ExitButton.setDefaultButton(true);
+        ExitButton.setPrefWidth(100);
+        gridPane.add(ExitButton, 2, 4, 2, 1);
 
 
-        LoginButton.setOnAction(new EventHandler<ActionEvent>()
+
+
+
+
+        ExitButton.setOnAction(new EventHandler<ActionEvent>()
         {
 
             public void handle(ActionEvent event) 
             {
                
-
+                Stage stage = (Stage) ExitButton.getScene().getWindow();
+    stage.close();
                 
-
-
                 
             }
       });
+
+
+
+
 
 
 
@@ -144,6 +162,22 @@ public class Supplier extends Application {
 
             
         });
+
+
+
+        LoginButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+
+            public void handle(ActionEvent event) 
+            {
+               
+                Stage stage = new Stage();
+                stage.setHeight(500);
+                stage.setWidth(800);
+                stage.show();
+            }
+        });
+
     }
 
     private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
